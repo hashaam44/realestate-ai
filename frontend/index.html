@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Make the website responsive on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RealEstate AI | House Price Prediction</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Connect our CSS file -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+
+            <a href="#" class="logo">
+                <span class="logo-icon">R</span>
+                RealEstate<span>AI</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#predictor">Predict</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#about">About</a>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                <span class="status-dot"></span>
+                AI-Powered Property Prediction
+            </div>
+
+            <h1>
+                Predict Your Property's
+                <span>Market Value</span>
+            </h1>
+
+            <p>
+                Get an estimated property price using our machine learning
+                model trained on real estate data.
+            </p>
+
+            <a href="#predictor" class="hero-button">
+                Start Prediction
+                <span>→</span>
+            </a>
+
+        </div>
+
+        <div class="hero-card">
+
+            <div class="floating-card card-one">
+                <span>ML Model</span>
+                <strong>Linear Regression</strong>
+            </div>
+
+            <div class="floating-card card-two">
+                <span>Model R²</span>
+                <strong>0.252</strong>
+            </div>
+
+            <div class="building-icon">
+                🏢
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Prediction Section -->
+    <section class="predictor-section" id="predictor">
+
+        <div class="section-heading">
+            <span class="section-label">PREDICTION ENGINE</span>
+
+            <h2>Estimate Property Value</h2>
+
+            <p>
+                Enter the property details below and let the machine learning
+                model estimate its price.
+            </p>
+        </div>
+
+
+        <div class="prediction-container">
+
+            <!-- Input Form -->
+            <div class="form-card">
+
+                <div class="card-header">
+                    <div>
+                        <h3>Property Information</h3>
+                        <p>Provide the details of the property</p>
+                    </div>
+
+                    <span class="step-number">01</span>
+                </div>
+
+
+                <form id="predictionForm">
+
+                    <div class="input-grid">
+
+                        <!-- Bedrooms -->
+                        <div class="input-group">
+                            <label for="bed">Bedrooms</label>
+
+                            <div class="input-wrapper">
+                                <span>🛏</span>
+                                <input
+                                    type="number"
+                                    id="bed"
+                                    placeholder="e.g. 3"
+                                    min="1"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+
+                        <!-- Bathrooms -->
+                        <div class="input-group">
+                            <label for="bath">Bathrooms</label>
+
+                            <div class="input-wrapper">
+                                <span>🚿</span>
+                                <input
+                                    type="number"
+                                    id="bath"
+                                    placeholder="e.g. 2"
+                                    min="1"
+                                    step="0.5"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+
+                        <!-- Acre Lot -->
+                        <div class="input-group">
+                            <label for="acre_lot">Lot Size (Acres)</label>
+
+                            <div class="input-wrapper">
+                                <span>📐</span>
+                                <input
+                                    type="number"
+                                    id="acre_lot"
+                                    placeholder="e.g. 0.25"
+                                    min="0"
+                                    step="0.01"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+
+                        <!-- House Size -->
+                        <div class="input-group">
+                            <label for="house_size">House Size (sq ft)</label>
+
+                            <div class="input-wrapper">
+                                <span>📏</span>
+                                <input
+                                    type="number"
+                                    id="house_size"
+                                    placeholder="e.g. 1800"
+                                    min="1"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+
+                        <!-- Previous Sold Year -->
+                        <div class="input-group">
+                            <label for="prev_sold_year">Previous Sale Year</label>
+
+                            <div class="input-wrapper">
+                                <span>📅</span>
+                                <input
+                                    type="number"
+                                    id="prev_sold_year"
+                                    placeholder="e.g. 2020"
+                                    min="1800"
+                                    max="2100"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+
+                        <!-- Property Status -->
+                        <div class="input-group">
+                            <label for="status">Property Status</label>
+
+                            <div class="input-wrapper">
+                                <span>🏷</span>
+
+                                <select id="status" required>
+                                    <option value="">Select status</option>
+                                    <option value="for_sale">For Sale</option>
+                                    <option value="sold">Sold</option>
+                                    <option value="ready_to_build">
+                                        Ready to Build
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <!-- State -->
+                        <div class="input-group full-width">
+                            <label for="state">State</label>
+
+                            <div class="input-wrapper">
+                                <span>📍</span>
+
+                                <input
+                                    type="text"
+                                    id="state"
+                                    placeholder="e.g. California"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="predict-button" id="predictButton">
+                        <span id="buttonText">Predict Property Price</span>
+                        <span class="button-arrow">→</span>
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- Result Card -->
+            <div class="result-card" id="resultCard">
+
+                <div class="result-placeholder" id="resultPlaceholder">
+
+                    <div class="result-icon">
+                        $
+                    </div>
+
+                    <h3>Your Prediction</h3>
+
+                    <p>
+                        Fill in the property information and click
+                        <strong>Predict Property Price</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- Actual prediction result -->
+                <div class="result-content" id="resultContent">
+
+                    <span class="result-label">
+                        ESTIMATED PROPERTY VALUE
+                    </span>
+
+                    <div class="price" id="predictedPrice">
+                        $0
+                    </div>
+
+                    <p class="result-description">
+                        Estimated using the RealEstate AI machine learning model.
+                    </p>
+
+                    <div class="result-divider"></div>
+
+                    <div class="result-info">
+                        <div>
+                            <span>Model</span>
+                            <strong>Linear Regression</strong>
+                        </div>
+
+                        <div>
+                            <span>Currency</span>
+                            <strong>USD</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- How It Works -->
+    <section class="how-section" id="how-it-works">
+
+        <div class="section-heading">
+            <span class="section-label">THE PROCESS</span>
+
+            <h2>How RealEstate AI Works</h2>
+
+            <p>
+                From property information to an AI-generated price estimate.
+            </p>
+        </div>
+
+
+        <div class="process-grid">
+
+            <div class="process-card">
+                <span class="process-number">01</span>
+                <div class="process-icon">📋</div>
+                <h3>Enter Details</h3>
+                <p>
+                    Provide bedrooms, bathrooms, lot size, house size and
+                    property information.
+                </p>
+            </div>
+
+
+            <div class="process-card">
+                <span class="process-number">02</span>
+                <div class="process-icon">⚙️</div>
+                <h3>ML Processing</h3>
+                <p>
+                    Your information is sent to the FastAPI backend and
+                    processed by the trained ML pipeline.
+                </p>
+            </div>
+
+
+            <div class="process-card">
+                <span class="process-number">03</span>
+                <div class="process-icon">🤖</div>
+                <h3>Price Prediction</h3>
+                <p>
+                    The machine learning model generates an estimated
+                    property value.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+
+        <div class="about-content">
+
+            <span class="section-label">ABOUT THE PROJECT</span>
+
+            <h2>Machine Learning Behind The Prediction</h2>
+
+            <p>
+                RealEstate AI is an end-to-end machine learning project.
+                The system uses property features such as bedrooms,
+                bathrooms, lot size, house size, state and property status
+                to estimate real estate prices.
+            </p>
+
+            <div class="tech-tags">
+                <span>Python</span>
+                <span>Scikit-learn</span>
+                <span>FastAPI</span>
+                <span>Pandas</span>
+                <span>Linear Regression</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div>
+            <strong>RealEstate AI</strong>
+            <p>Machine Learning House Price Prediction</p>
+        </div>
+
+        <p>Built with Python & Machine Learning</p>
+
+    </footer>
+
+
+    <!-- Connect JavaScript -->
+    <script src="/static/script.js"></script>
+
+</body>
+</html>
